@@ -1,0 +1,162 @@
+artifact_path: file:D:/asah/MSML/SMSML_Reynard-Adimas-Nabil/Membangun_Model/mlruns/1/models/m-fec4f37ee2dd4e908fe449879ab756a6/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.7
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.1
+is_signature_from_type_hint: false
+mlflow_version: 3.7.0
+model_id: m-fec4f37ee2dd4e908fe449879ab756a6
+model_size_bytes: 15111668
+model_uuid: m-fec4f37ee2dd4e908fe449879ab756a6
+prompts: null
+run_id: b4a4d807e6fe4e24bd5ff5f8348e29f8
+signature:
+  inputs: '[{"type": "double", "name": "able", "required": true}, {"type": "double",
+    "name": "access", "required": true}, {"type": "double", "name": "account", "required":
+    true}, {"type": "double", "name": "add", "required": true}, {"type": "double",
+    "name": "allow", "required": true}, {"type": "double", "name": "also", "required":
+    true}, {"type": "double", "name": "always", "required": true}, {"type": "double",
+    "name": "amazing", "required": true}, {"type": "double", "name": "annoying", "required":
+    true}, {"type": "double", "name": "anything", "required": true}, {"type": "double",
+    "name": "application", "required": true}, {"type": "double", "name": "apps", "required":
+    true}, {"type": "double", "name": "artificial", "required": true}, {"type": "double",
+    "name": "awesome", "required": true}, {"type": "double", "name": "back", "required":
+    true}, {"type": "double", "name": "backup", "required": true}, {"type": "double",
+    "name": "bad", "required": true}, {"type": "double", "name": "ban", "required":
+    true}, {"type": "double", "name": "banned", "required": true}, {"type": "double",
+    "name": "best", "required": true}, {"type": "double", "name": "better", "required":
+    true}, {"type": "double", "name": "block", "required": true}, {"type": "double",
+    "name": "blocked", "required": true}, {"type": "double", "name": "bug", "required":
+    true}, {"type": "double", "name": "business", "required": true}, {"type": "double",
+    "name": "button", "required": true}, {"type": "double", "name": "call", "required":
+    true}, {"type": "double", "name": "cant", "required": true}, {"type": "double",
+    "name": "change", "required": true}, {"type": "double", "name": "channel", "required":
+    true}, {"type": "double", "name": "chat", "required": true}, {"type": "double",
+    "name": "chatting", "required": true}, {"type": "double", "name": "code", "required":
+    true}, {"type": "double", "name": "communicate", "required": true}, {"type": "double",
+    "name": "communication", "required": true}, {"type": "double", "name": "connect",
+    "required": true}, {"type": "double", "name": "contact", "required": true}, {"type":
+    "double", "name": "cool", "required": true}, {"type": "double", "name": "could",
+    "required": true}, {"type": "double", "name": "data", "required": true}, {"type":
+    "double", "name": "day", "required": true}, {"type": "double", "name": "dear",
+    "required": true}, {"type": "double", "name": "delete", "required": true}, {"type":
+    "double", "name": "deleted", "required": true}, {"type": "double", "name": "device",
+    "required": true}, {"type": "double", "name": "didnt", "required": true}, {"type":
+    "double", "name": "doesnt", "required": true}, {"type": "double", "name": "download",
+    "required": true}, {"type": "double", "name": "due", "required": true}, {"type":
+    "double", "name": "easy", "required": true}, {"type": "double", "name": "even",
+    "required": true}, {"type": "double", "name": "ever", "required": true}, {"type":
+    "double", "name": "every", "required": true}, {"type": "double", "name": "everyone",
+    "required": true}, {"type": "double", "name": "everything", "required": true},
+    {"type": "double", "name": "experience", "required": true}, {"type": "double",
+    "name": "facing", "required": true}, {"type": "double", "name": "family", "required":
+    true}, {"type": "double", "name": "fast", "required": true}, {"type": "double",
+    "name": "feature", "required": true}, {"type": "double", "name": "fix", "required":
+    true}, {"type": "double", "name": "friend", "required": true}, {"type": "double",
+    "name": "full", "required": true}, {"type": "double", "name": "get", "required":
+    true}, {"type": "double", "name": "getting", "required": true}, {"type": "double",
+    "name": "give", "required": true}, {"type": "double", "name": "go", "required":
+    true}, {"type": "double", "name": "going", "required": true}, {"type": "double",
+    "name": "good", "required": true}, {"type": "double", "name": "got", "required":
+    true}, {"type": "double", "name": "great", "required": true}, {"type": "double",
+    "name": "group", "required": true}, {"type": "double", "name": "happy", "required":
+    true}, {"type": "double", "name": "hello", "required": true}, {"type": "double",
+    "name": "help", "required": true}, {"type": "double", "name": "helpful", "required":
+    true}, {"type": "double", "name": "hold", "required": true}, {"type": "double",
+    "name": "hour", "required": true}, {"type": "double", "name": "important", "required":
+    true}, {"type": "double", "name": "install", "required": true}, {"type": "double",
+    "name": "instant", "required": true}, {"type": "double", "name": "intelligence",
+    "required": true}, {"type": "double", "name": "issue", "required": true}, {"type":
+    "double", "name": "keep", "required": true}, {"type": "double", "name": "kindly",
+    "required": true}, {"type": "double", "name": "know", "required": true}, {"type":
+    "double", "name": "last", "required": true}, {"type": "double", "name": "let",
+    "required": true}, {"type": "double", "name": "life", "required": true}, {"type":
+    "double", "name": "like", "required": true}, {"type": "double", "name": "log",
+    "required": true}, {"type": "double", "name": "login", "required": true}, {"type":
+    "double", "name": "long", "required": true}, {"type": "double", "name": "longer",
+    "required": true}, {"type": "double", "name": "lot", "required": true}, {"type":
+    "double", "name": "love", "required": true}, {"type": "double", "name": "make",
+    "required": true}, {"type": "double", "name": "many", "required": true}, {"type":
+    "double", "name": "medium", "required": true}, {"type": "double", "name": "message",
+    "required": true}, {"type": "double", "name": "messaging", "required": true},
+    {"type": "double", "name": "messenger", "required": true}, {"type": "double",
+    "name": "meta", "required": true}, {"type": "double", "name": "month", "required":
+    true}, {"type": "double", "name": "much", "required": true}, {"type": "double",
+    "name": "name", "required": true}, {"type": "double", "name": "need", "required":
+    true}, {"type": "double", "name": "never", "required": true}, {"type": "double",
+    "name": "new", "required": true}, {"type": "double", "name": "nice", "required":
+    true}, {"type": "double", "name": "note", "required": true}, {"type": "double",
+    "name": "nothing", "required": true}, {"type": "double", "name": "notification",
+    "required": true}, {"type": "double", "name": "number", "required": true}, {"type":
+    "double", "name": "official", "required": true}, {"type": "double", "name": "okay",
+    "required": true}, {"type": "double", "name": "old", "required": true}, {"type":
+    "double", "name": "one", "required": true}, {"type": "double", "name": "open",
+    "required": true}, {"type": "double", "name": "opening", "required": true}, {"type":
+    "double", "name": "option", "required": true}, {"type": "double", "name": "people",
+    "required": true}, {"type": "double", "name": "phone", "required": true}, {"type":
+    "double", "name": "photo", "required": true}, {"type": "double", "name": "picture",
+    "required": true}, {"type": "double", "name": "please", "required": true}, {"type":
+    "double", "name": "poor", "required": true}, {"type": "double", "name": "possible",
+    "required": true}, {"type": "double", "name": "post", "required": true}, {"type":
+    "double", "name": "privacy", "required": true}, {"type": "double", "name": "problem",
+    "required": true}, {"type": "double", "name": "profile", "required": true}, {"type":
+    "double", "name": "properly", "required": true}, {"type": "double", "name": "quality",
+    "required": true}, {"type": "double", "name": "really", "required": true}, {"type":
+    "double", "name": "reason", "required": true}, {"type": "double", "name": "reliable",
+    "required": true}, {"type": "double", "name": "remove", "required": true}, {"type":
+    "double", "name": "request", "required": true}, {"type": "double", "name": "restore",
+    "required": true}, {"type": "double", "name": "review", "required": true}, {"type":
+    "double", "name": "right", "required": true}, {"type": "double", "name": "say",
+    "required": true}, {"type": "double", "name": "saying", "required": true}, {"type":
+    "double", "name": "screen", "required": true}, {"type": "double", "name": "see",
+    "required": true}, {"type": "double", "name": "send", "required": true}, {"type":
+    "double", "name": "sending", "required": true}, {"type": "double", "name": "service",
+    "required": true}, {"type": "double", "name": "set", "required": true}, {"type":
+    "double", "name": "share", "required": true}, {"type": "double", "name": "show",
+    "required": true}, {"type": "double", "name": "showing", "required": true}, {"type":
+    "double", "name": "since", "required": true}, {"type": "double", "name": "sir",
+    "required": true}, {"type": "double", "name": "solve", "required": true}, {"type":
+    "double", "name": "someone", "required": true}, {"type": "double", "name": "something",
+    "required": true}, {"type": "double", "name": "soon", "required": true}, {"type":
+    "double", "name": "spam", "required": true}, {"type": "double", "name": "star",
+    "required": true}, {"type": "double", "name": "status", "required": true}, {"type":
+    "double", "name": "still", "required": true}, {"type": "double", "name": "stop",
+    "required": true}, {"type": "double", "name": "support", "required": true}, {"type":
+    "double", "name": "take", "required": true}, {"type": "double", "name": "talk",
+    "required": true}, {"type": "double", "name": "team", "required": true}, {"type":
+    "double", "name": "thank", "required": true}, {"type": "double", "name": "thanks",
+    "required": true}, {"type": "double", "name": "thats", "required": true}, {"type":
+    "double", "name": "thing", "required": true}, {"type": "double", "name": "think",
+    "required": true}, {"type": "double", "name": "time", "required": true}, {"type":
+    "double", "name": "tried", "required": true}, {"type": "double", "name": "try",
+    "required": true}, {"type": "double", "name": "trying", "required": true}, {"type":
+    "double", "name": "unable", "required": true}, {"type": "double", "name": "update",
+    "required": true}, {"type": "double", "name": "updated", "required": true}, {"type":
+    "double", "name": "use", "required": true}, {"type": "double", "name": "used",
+    "required": true}, {"type": "double", "name": "useful", "required": true}, {"type":
+    "double", "name": "user", "required": true}, {"type": "double", "name": "using",
+    "required": true}, {"type": "double", "name": "version", "required": true}, {"type":
+    "double", "name": "video", "required": true}, {"type": "double", "name": "voice",
+    "required": true}, {"type": "double", "name": "want", "required": true}, {"type":
+    "double", "name": "way", "required": true}, {"type": "double", "name": "well",
+    "required": true}, {"type": "double", "name": "whats", "required": true}, {"type":
+    "double", "name": "whatsapp", "required": true}, {"type": "double", "name": "without",
+    "required": true}, {"type": "double", "name": "work", "required": true}, {"type":
+    "double", "name": "working", "required": true}, {"type": "double", "name": "world",
+    "required": true}, {"type": "double", "name": "worst", "required": true}, {"type":
+    "double", "name": "would", "required": true}, {"type": "double", "name": "year",
+    "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-12-16 08:47:37.293785'
