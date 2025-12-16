@@ -48,20 +48,14 @@ class TextPreprocessor(BaseEstimator, TransformerMixin):
         text = text.translate(str.maketrans('', '', string.punctuation)) # remove all punctuations
         text = text.strip(' ') # remove characters space from both left and right text 
 
-        # Case Folding 
         text = text.lower() 
-
-        # Replace slang 
         if self.slang_dict:
             words = text.split()
             normalized_words = [self.slang_dict.get(word, word) for word in words]
             text = " ".join(normalized_words) 
         
-        # Tokenizing & Stopwords 
         tokens = word_tokenize(text)
         filtered_tokens = [t for t in tokens if t not in self.list_stopwords] 
-
-        # lemmatizing 
         lemmatized_words = [self.lemmatizer.lemmatize(word) for word in filtered_tokens]
 
         return ' '.join(lemmatized_words)

@@ -31,7 +31,7 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      # 4. Jalankan script automasi
+      # 4. automasi
       - name: Run Preprocessing Script
         run: |
           python preprocessing/automate_Reynard_Adimas_Nabil.py
