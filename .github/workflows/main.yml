@@ -43,9 +43,9 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
           # Add file hasil preprocessing
-          git add preprocessing/namadataset_preprocessing/train_processed.csv
-          git add preprocessing/namadataset_preprocessing/test_processed.csv
-          git add preprocessing/namadataset_preprocessing/nlp_pipeline.joblib
+          git add preprocessing/whatsapp_review_preprocessing/train_processed.csv
+          git add preprocessing/whatsapp_review_preprocessing/test_processed.csv
+          git add preprocessing/whatsapp_review_preprocessing/preprocess_pipeline.joblib
           
           # Cek status, jika ada perubahan baru commit
           if [[ -n $(git status -s) ]]; then
