@@ -1,0 +1,56 @@
+name: Automasi Preprocessing
+
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'preprocessing/namadataset_preprocessing/**'
+
+permissions:
+  contents: write
+
+jobs:
+  run-preprocessing:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Setup Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      # 3. Install dependencies
+      - name: Install libraries
+        run: |
+          pip install -r requirements.txt
+
+      # 4. Jalankan script automasi
+      - name: Run Preprocessing Script
+        run: |
+          python preprocessing/automate_Reynard_Adimas_Nabil.py
+
+ 
+      - name: Commit and Push Processed Data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add file hasil preprocessing
+          git add preprocessing/namadataset_preprocessing/train_processed.csv
+          git add preprocessing/namadataset_preprocessing/test_processed.csv
+          git add preprocessing/namadataset_preprocessing/nlp_pipeline.joblib
+          
+          # Cek status, jika ada perubahan baru commit
+          if [[ -n $(git status -s) ]]; then
+            git commit -m "Auto-generated: Processed dataset update [skip ci]"
+            git push
+          else
+            echo "No changes in dataset."
+          fi
