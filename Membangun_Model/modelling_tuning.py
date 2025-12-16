@@ -103,14 +103,20 @@ def train():
             plt.savefig(cm_file)
             plt.close()
 
-            model_file = f"model_{model_name}.joblib"
-            dump(best_model, model_file)
+            # model_file = f"model_{model_name}.joblib"
+            # dump(best_model, model_file)
+             
+            mlflow.sklearn.log_model(
+                sk_model=best_model, 
+                artifact_path="model",
+                registered_model_name=f"Model_{model_name}"
+            )
 
             mlflow.log_artifact(cm_file)
-            mlflow.log_artifact(model_file)
+            # mlflow.log_artifact(model_file)
 
             if os.path.exists(cm_file): os.remove(cm_file)
-            if os.path.exists(model_file) : os.remove(model_file)
+            #if os.path.exists(model_file) : os.remove(model_file)
     print("Done")
 
 if __name__ == "__main__":
