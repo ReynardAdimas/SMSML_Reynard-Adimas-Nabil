@@ -34,6 +34,8 @@ def load_data():
 
 def train():
     dagshub.init(repo_owner=dagshub_usn, repo_name=dagshub_repo, mlflow=True)
+    remote_server_uri = f"https://dagshub.com/{dagshub_usn}/{dagshub_repo}.mlflow"
+    mlflow.set_tracking_uri(remote_server_uri)
     mlflow.set_experiment("Eksperimen Basic")
     X_train, y_train, X_test, y_test = load_data()
     models_config = {

@@ -1,5 +1,4 @@
-name: Automasi Preprocessing
-
+name: Automasi Pipeline 
 
 on:
   push:
@@ -12,31 +11,27 @@ permissions:
   contents: write
 
 jobs:
-  run-preprocessing:
+  run-pipeline:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Setup Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
-      # 3. Install dependencies
       - name: Install libraries
         run: |
           pip install -r requirements.txt
 
-      # 4. automasi
       - name: Run Preprocessing Script
         run: |
           python preprocessing/automate_Reynard_Adimas_Nabil.py
 
- 
+
       - name: Commit and Push Processed Data
         run: |
           git config --global user.name "github-actions[bot]"
@@ -54,3 +49,10 @@ jobs:
           else
             echo "No changes in dataset."
           fi
+
+      - name: Run Training and Log to DagsHub
+        env:
+          MLFLOW_TRACKING_USERNAME: ReynardAdimas
+          MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
+        run: |
+          python modelling_tuning.py
