@@ -55,4 +55,4 @@ jobs:
           MLFLOW_TRACKING_USERNAME: ReynardAdimas
           MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
-          python modelling_tuning.py
+          python Membangun_Model/modelling_tuning.py
