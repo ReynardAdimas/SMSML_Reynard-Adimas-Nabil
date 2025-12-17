@@ -53,7 +53,8 @@ jobs:
       - name: Run Training and Log to DagsHub
         env:
           MLFLOW_TRACKING_USERNAME: ReynardAdimas
-          MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
+          MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }} 
+          DAGSHUB_USER_TOKEN : ${{ secrets.DAGSHUB_TOKEN }}
         run: | 
           pip install mlflow dagshub pandas scikit-learn matplotlib seaborn joblib
           python Membangun_Model/modelling_tuning.py
