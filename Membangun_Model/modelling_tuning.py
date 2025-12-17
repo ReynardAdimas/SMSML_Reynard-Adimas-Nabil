@@ -10,8 +10,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import BernoulliNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import GridSearchCV 
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+from sklearn.model_selection import GridSearchCV, learning_curve 
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, roc_curve, auc
 from joblib import dump
 
 dagshub_usn = 'ReynardAdimas'
@@ -102,21 +102,67 @@ def train():
             cm_file = f"cm_{model_name}.png"
             plt.savefig(cm_file)
             plt.close()
+            
 
-            # model_file = f"model_{model_name}.joblib"
-            # dump(best_model, model_file)
-             
+            mlflow.log_artifact(cm_file)
+
+            if os.path.exists(cm_file): os.remove(cm_file) 
+
+            if hasattr(best_model, "predict_proba"):
+                try:
+                    y_prob = best_model.predict_proba(X_test)[:, 1]
+                    fpr, tpr, _ = roc_curve(y_test, y_prob)
+                    roc_auc = auc(fpr, tpr) 
+
+                    plt.figure(figsize=(6,5))
+                    plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC curve (area = {roc_auc:.2f})')
+                    plt.plot([0,1], [0,1], color='navy', lw=2, linestyle='--')
+                    plt.xlim([0.0, 1.0])
+                    plt.ylim([0.0, 1.05])
+                    plt.xlabel('False Positive Rate')
+                    plt.ylabel('True Positive Rate')
+                    plt.title(f'ROC Curve - {model_name}')
+                    plt.legend(loc='lower right') 
+
+                    roc_file = f"roc_{model_name}.png"
+                    plt.savefig(roc_file)
+                    plt.close()
+                    mlflow.log_artifact(roc_file)
+                    if os.path.exists(roc_file) : os.remove(roc_file) 
+                    mlflow.log_metric("auc_score", roc_auc) 
+                except Exception as e:
+                    print(f"Skipping ROC for {model_name}: {e}") 
+            
+            try:
+                train_sizes, train_scores, test_scores = learning_curve(
+                    best_model, X_train, y_train, cv=3, n_jobs=-1, train_sizes=np.linspace(0.1, 1.0, 5) 
+                ) 
+
+                train_scores_mean = np.mean(train_scores, axis=1)
+                test_scores_mean = np.mean(test_scores, axis=1)
+
+                plt.figure(figsize=(6,5))
+                plt.plot(train_sizes, train_scores_mean, 'o-', color="r", label="Training Score")
+                plt.plot(train_sizes, test_scores_mean, 'o-', color="g", label="Cross-validation score")
+                plt.title(f"Learning Curve - {model_name}")
+                plt.xlabel("Training Examples")
+                plt.ylabel("Score")
+                plt.legend(loc="best")
+                plt.grid() 
+
+                lc_file = f"learning_curve_{model_name}.png" 
+                plt.savefig(lc_file)
+                plt.close()
+                mlflow.log_artifact(lc_file)
+                if os.path.exists(lc_file): os.remove(lc_file)
+            except Exception as e:
+                print(f" Skipping Learning Curve {model_name}: {e}") 
+
             mlflow.sklearn.log_model(
                 sk_model=best_model, 
                 artifact_path="model",
                 registered_model_name=f"Model_{model_name}"
             )
-
-            mlflow.log_artifact(cm_file)
-            # mlflow.log_artifact(model_file)
-
-            if os.path.exists(cm_file): os.remove(cm_file)
-            #if os.path.exists(model_file) : os.remove(model_file)
     print("Done")
 
 if __name__ == "__main__":
